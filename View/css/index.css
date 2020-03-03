@@ -1,0 +1,23 @@
+body{
+   background-color:  #243864;
+}
+
+.main-header{
+   font-family: 'Bitstream Vera Sans', Verdana, Tahoma, 'Sans serif';
+   background-color: #3A5693;
+   padding: 50px;
+   height:100px;
+   width: auto;
+   text-align: center;
+   color: ghostwhite;
+
+}
+
+.main-div{
+   font-family: 'Times New Roman', Times, serif;
+   margin-top: 30px;
+   text-align: center;
+   color: ghostwhite;
+}
+
+
