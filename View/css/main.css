@@ -1,0 +1,50 @@
+/*  tag */
+
+body{
+    background-color:  #3A5693; 
+
+}
+a{
+    margin-left: 20px;
+}
+
+h2{
+    text-align: center;
+}
+
+/*  Class */
+.main-header{
+    padding: 20px;
+    text-align: center;
+    color: aliceblue;
+}
+.main-div{
+    
+    color: aliceblue;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.table-div{
+   padding: 80px;
+   font-family: 'Times New Roman', Times, serif;
+   color: rgb(19, 3, 3);
+}
+
+.add-div{
+    padding: 400px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(216, 201, 201);
+    
+}
+
+.delete-div{
+    padding: 200px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(19, 3, 3);
+    
+}
+
+.alter-div{
+    padding: 400px;
+    font-family: 'Times New Roman', Times, serif;
+    color: rgb(216, 201, 201);
+}
