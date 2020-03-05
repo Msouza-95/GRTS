@@ -2,22 +2,37 @@ body{
    background-color:  #243864;
 }
 
+label{
+   color: white;
+}
+
+
+
 .index-header{
    font-family: 'Bitstream Vera Sans', Verdana, Tahoma, 'Sans serif';
+   font-size: 10pw;
    background-color: #3A5693;
-   padding: 50px;
-   height:100px;
-   width: 100%%;
    text-align: center;
    color: ghostwhite;
-
+   height: 200px;
+  
+  
 }
 
-.index-div{
-   padding: 100px;
-   font-family: 'Times New Roman', Times, serif;
-   margin-top: 30px;
-   color: ghostwhite;
+.login-div{
+   font-size: ;
+    display: flex;
+    align-items: center;
+    height: 230px;
+    width: 300px;
+    border: 2px solid ghostwhite;
+    border-radius: 5px;
+    margin-left: 40%;
+    margin-top: 3%;
+    flex-direction: column;
+    flex-wrap: wrap;
+  
 }
+
 
 
