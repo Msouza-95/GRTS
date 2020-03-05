@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Main</title>
@@ -14,27 +13,30 @@
 </head>
 <body>
     <header class="main-header">
+        <div class="nav ">
+            <nav class="nav nav-pills flex-column flex-sm-row">
+                <a class="nav-item nav-link active" href="#"  id="listagem">Listagem</a>
+                <a class="nav-item nav-link active " href="#" id="adicionar">Adicionar</a>
+                <a class="nav-item nav-link active" href="#" id="update">Alterar/Delete</a>
+                <a style=" class="nav-item nav-link active" href="./index.html">vazar</a>
+                
+    
+            </nav>
+        </div>
         <h1>GRTS</h1>
     </header>
-    <div class="nav justify-content-center">
-        <nav class="nav nav-pills flex-column flex-sm-row">
-            <a class="nav-item nav-link active" href="">Listagem</a>
-            <a class="nav-item nav-link active " href="">Adicionar</a>
-            <a class="nav-item nav-link active" href="">Alterar/Delete</a>
+   
 
-        </nav>
-    </div>
-
-    <div class="table-div">
+    <div class="table-div" id="table_id_div">
         <table id="table_id" class="display" >
             <thead>
                 <tr></tr>
-                    <th>Name</th>
-                    <th>Position</th>
-                    <th>Office</th>
-                    <th>Age</th>
-                    <th>Start date</th>
-                    <th>Salary</th>
+                    <th>Empresa</th>
+                    <th>Responsavél</th>
+                    <th>Cnpj</th>
+                    <th>Telefone/th>
+                    <th>Lagradouro</th>
+                    <th>Complemento</th>
                 </tr>
             </thead>
             <tbody>
@@ -93,16 +95,16 @@
         </table>
     </div>
 
-    <div class="add-div">
+    <div class="add-div" id="add_id" style="display: none;">
             <h2>Adicionar Novo cliente</h2>
-        <form class="" action="">
+        <form class="" action="../../Controller/controllerMain.php" method="POST" >
             <div class="form-group">
                 <label for="empresa">Nome da Empresa</label>
-                <input type="text" class="form-control" id="empresa" placeholder="Empresa">
+                <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa">
             </div>
             <div class="form-group">
                 <label for="resp">Responsável</label>
-                <input type="text" class="form-control" id="resp" placeholder="Responsável">
+                <input type="text" class="form-control" name="resp" id="resp" placeholder="Responsável">
             </div>
             <div class="form-group">
                 <label for="cnpj">CNPJ</label>
@@ -110,7 +112,7 @@
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" id="telefone" placeholder="Telefone">
+                <input type="tel" class="form-control" id="telefone" placeholder="Telefone" name="telefone">
             </div>
             <div class="form-group">
                 <label for="log">Logradouro</label>
@@ -141,14 +143,15 @@
         </form>
     </div>
 
-    <div class="delete-div">
-        <h2>Deletar cliente</h2>
+    <div class="update-div" id="update_id" style="display: none;">
+        <h2>Update cliente</h2>
         <table id="table_id_delete" class="display" >
             <thead>
                 <tr></tr>
                     <th>Empresa</th>
                     <th>cnpj</th>
                     <th>Responsável</th>
+                    <th>Ação</th>
                     <th>Ação</th>
                     
                 </tr>
@@ -158,37 +161,37 @@
                     <td>Tiger Nixon</td>
                     <td>System Architect</td>
                     <td>Edinburgh</td>
-                    <td><a href="">Delete</a></td>
-                    <td><a href="">Alterar</a></td>
+                    <td><a href="#">Delete</a></td>
+                    <td><a href="#" id="alter_id_2">Alterar</a></td>
                    
                 </tr>
                 <tr>
                     <td>Garrett Winters</td>
                     <td>Accountant</td>
                     <td>Tokyo</td>
-                    <td><a href="">Delete</a></td>
-                    <td><a href="">Alterar</a></td>
+                    <td><a href="#">Delete</a></td>
+                    <td><a href="#" >Alterar</a></td>
                 </tr>
                 <tr>
                     <td>Ashton Cox</td>
                     <td>Junior Technical Author</td>
                     <td>San Francisco</td>
-                    <td><a href="">Delete</a></td>
-                    <td><a href="">Alterar</a></td>
+                    <td><a href="#">Delete</a></td>
+                    <td><a href="#">Alterar</a></td>
                 </tr>
                 <tr>
                     <td>Cedric Kelly</td>
                     <td>Senior Javascript Developer</td>
                     <td>Edinburgh</td>
-                    <td><a href="">Delete</a></td>
-                    <td><a href="">Alterar</a></td>
+                    <td><a href="#" id>Delete</a></td>
+                    <td><a href="#">Alterar</a></td>
                 </tr>
              
             </tfoot>
         </table>
     </div>
 
-    <div class="alter-div">
+    <div class="alter-div" id="alter_id" style="display: none;">
         <h2>Alterar Dados do Cliente</h2>
         <form class="" action="">
             <div class="form-group">
@@ -244,6 +247,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script><font></font>
     
     <script src="../script/renderer.js"></script>
+    <script src="../script/hides.js"> </script>
     
 </body>
 </html>

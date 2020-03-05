@@ -30,21 +30,23 @@ h2{
 }
 
 .add-div{
-    padding: 400px;
+    padding: 80px;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(216, 201, 201);
+    width: 80%;
+    margin-left: 15%;
     
 }
 
 .delete-div{
-    padding: 200px;
+    padding: 80px;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(19, 3, 3);
     
 }
 
 .alter-div{
-    padding: 400px;
+    padding: 80px;
     font-family: 'Times New Roman', Times, serif;
     color: rgb(216, 201, 201);
 }
