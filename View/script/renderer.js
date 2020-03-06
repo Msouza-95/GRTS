@@ -6,3 +6,4 @@ $(document).ready(function() {
 $(document).ready(function(){	
     $("#table_id_delete").DataTable();
 });
+

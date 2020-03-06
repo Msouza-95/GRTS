@@ -18,7 +18,7 @@
                 <a class="nav-item nav-link active" href="#"  id="listagem">Listagem</a>
                 <a class="nav-item nav-link active " href="#" id="adicionar">Adicionar</a>
                 <a class="nav-item nav-link active" href="#" id="update">Alterar/Delete</a>
-                <a style=" class="nav-item nav-link active" href="./index.html">vazar</a>
+                <a style=" class="nav-item nav-link active" href="./index.php">vazar</a>
                 
     
             </nav>
@@ -34,7 +34,7 @@
                     <th>Empresa</th>
                     <th>Responsavél</th>
                     <th>Cnpj</th>
-                    <th>Telefone/th>
+                    <th>Telefone</th>
                     <th>Lagradouro</th>
                     <th>Complemento</th>
                 </tr>
@@ -97,46 +97,43 @@
 
     <div class="add-div" id="add_id" style="display: none;">
             <h2>Adicionar Novo cliente</h2>
-        <form class="" action="../../Controller/controllerMain.php" method="POST" >
+        <form class="" action="../../Controller/controllerCadastro.php" method="POST" >
             <div class="form-group">
                 <label for="empresa">Nome da Empresa</label>
-                <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa">
+                <input type="text" class="form-control" name="empresa" id="empresa" placeholder="Empresa" required>
             </div>
             <div class="form-group">
                 <label for="resp">Responsável</label>
-                <input type="text" class="form-control" name="resp" id="resp" placeholder="Responsável">
+                <input type="text" class="form-control" name="resp" id="resp" placeholder="Responsável" required>
             </div>
             <div class="form-group">
                 <label for="cnpj">CNPJ</label>
-                <input type="text" class="form-control" id="cnpj" name="cnpj">
+                <input type="text" class="form-control" id="cnpj" name="cnpj" required>
             </div>
             <div class="form-group">
                 <label for="telefone">Telefone</label>
-                <input type="tel" class="form-control" id="telefone" placeholder="Telefone" name="telefone">
+                <input type="tel" class="form-control" id="telefone" placeholder="Telefone" name="telefone" required>
             </div>
             <div class="form-group">
                 <label for="log">Logradouro</label>
-                <input type="text" class="form-control" id="log" placeholder="Rua dos Paraiso, nº 0">
+                <input type="text" class="form-control" id="log" name="log" placeholder="Rua dos Paraiso, nº 0" required>
               </div>
               <div class="form-group">
                 <label for="comple">Complemento</label>
-                <input type="text" class="form-control" id="comple" placeholder="Apartamento, hotel, casa, etc.">
+                <input type="text" class="form-control" id="comple" name="comple" placeholder="Apartamento, hotel, casa, etc." required>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="city">Cidade</label>
-                  <input type="text" class="form-control" id="city">
+                  <input type="text" class="form-control" id="city" name="city" required>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="Estado">Estado</label>
-                  <select id="Estado" class="form-control">
-                    <option selected>Escolher...</option>
-                    <option>...</option>
-                  </select>
+                <label for="city">Estado</label>
+                  <input type="text" class="form-control" id="estado" name="estado" required>
                 </div>
                 <div class="form-group col-md-2">
                   <label for="CEP">CEP</label>
-                  <input type="text" class="form-control" id="CEP">
+                  <input type="text" class="form-control" id="CEP" name="CEP" required>
                 </div>
               </div>
               <button>Cadastrar</button>
