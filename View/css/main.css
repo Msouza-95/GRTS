@@ -1,40 +1,41 @@
 /*  tag */
 
-body{
-    background-color:  #3A5693; 
 
-}
-a{
-    margin-left: 20px;
-}
 
 h2{
     text-align: center;
+    color: black
 }
 
-/*  Class */
+   
+
+
+.form-group{
+    color: black;
+
+}
 .main-header{
     padding: 20px;
     text-align: center;
     color: aliceblue;
 }
-.main-div{
-    
-    color: aliceblue;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-.table-div{
-   padding: 80px;
+
+.container{
+   padding: 5%;
+  
    font-family: 'Times New Roman', Times, serif;
    color: rgb(19, 3, 3);
+   border: solid 2px black;
+  
 }
 
 .add-div{
+    margin-top: 10%;
     padding: 80px;
     font-family: 'Times New Roman', Times, serif;
-    color: rgb(216, 201, 201);
-    width: 80%;
-    margin-left: 15%;
+    border: solid 2px black;
+    width: 60%;
+    margin-left: 20%;
     
 }
 

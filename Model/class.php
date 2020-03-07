@@ -12,14 +12,71 @@ class cliente
 
     public function __construct($nomeEmpresa = "", $responsavel = "", $cnpj = "", $telefone = "")
     {
-        
+
         $this->nomeEmpresa = $nomeEmpresa;
         $this->responsavel = $responsavel;
         $this->cnpj = $cnpj;
         $this->telefone = $telefone;
     }
-}
 
+
+    public function buscClient()
+    {
+        $client = new clientDAO();
+        return $client->buscClient($this);
+    }
+
+
+    public function newClient()
+    {
+        $client = new clientDAO();
+        return $client->newClient($this);
+    }
+
+    public function delete()
+    {
+        $client = new clientDAO();
+        return $client->delete($this);
+    }
+
+    public function DadosClient()
+    {
+        $client = new clientDAO();
+        return $client->DadosClient($this);
+    }
+    public function ClietAll()
+    {
+        $client = new clientDAO();
+        return $client->ClietAll();
+    }
+
+    public function upgradeClient($velho){
+        $client= new clientDAO;
+       return  $client->upgradeClient($this,$velho); 
+    }
+    public function getCNPJ()
+    {
+        return $this->cnpj;
+    }
+    public function setCNPJ($cnpj)
+    {
+        $this->cnpj = $cnpj;
+
+        return $this;
+    }
+    public function getResponsavel()
+    {
+        return $this->responsavel;
+    }
+    public function getTelefone()
+    {
+        return $this->telefone;
+    }
+    public function getNomeEmpresa()
+    {
+        return $this->nomeEmpresa;
+    }
+}
 // fim class cliente
 
 class endereco
@@ -30,7 +87,7 @@ class endereco
     protected $logradouro;
     protected $complemto;
     protected $cidade;
-  
+
 
     public function __construct($numero = "", $cep = "", $logradouro = "", $complemto = "", $cidade = "", $idClinte = "")
     {
@@ -42,10 +99,21 @@ class endereco
         $this->idClinte = $idClinte;
     }
 
-    public function newEndereco(){
-        $end = new enderecoDAO(); 
+    public function upgradeEndereco($vcnpj){
+        $end = new enderecoDAO();
+       return  $end->upgradeEndereco($this,$vcnpj); 
+    }
 
-        return  $end->newEndereco($this); 
+    public function newEndereco()
+    {
+        $end = new enderecoDAO();
+
+        return  $end->newEndereco($this);
+    }
+    public function SelectEndereco()
+    {
+        $end = new enderecoDAO();
+        return $end->SelectEndereco($this);
     }
     public function getIdCliente()
     {
@@ -100,14 +168,14 @@ class endereco
         return $this->complemto;
     }
 
-    public function setComplemtp($complemto)
+    public function setComplemto($complemto)
     {
         $this->complemto = $complemto;
 
         return $this;
     }
 
-    public function getidCidade()
+    public function getIdCidade()
     {
         return $this->cidade;
     }
@@ -126,33 +194,34 @@ class endereco
 
     public function setEstado($estado)
     {
-        $this->estado= $estado;
+        $this->estado = $estado;
 
         return $this;
     }
 }
 //fim classe endereço 
-class cidade {
+class cidade
+{
     protected $id;
     protected $descricao;
     protected $idEstado;
 
-    public function __construct($descricao="", $idEstado="")
+    public function __construct($descricao = "", $idEstado = "")
     {
         $this->descricao = $descricao;
-        $this->idEstado = $idEstado; 
+        $this->idEstado = $idEstado;
     }
 
     public function buscCidade()
     {
         $city = new cidadeDAO();
-        return $city->buscCidade($this); 
+        return $city->buscCidade($this);
     }
 
     public function newCidade()
     {
         $city = new cidadeDAO();
-        return $city->newCidade($this); 
+        return $city->newCidade($this);
     }
 
     public function getId()
@@ -167,14 +236,14 @@ class cidade {
         return $this;
     }
 
-    public function getdescricao()
+    public function getDescricao()
     {
         return $this->descricao;
     }
 
     public function setDescricao($descricao)
     {
-        $this->descricao= $descricao;
+        $this->descricao = $descricao;
 
         return $this;
     }
@@ -190,20 +259,21 @@ class cidade {
 
         return $this;
     }
-
 }
 
-class estado 
+class estado
 {
     protected $id;
-    protected $descricao; 
+    protected $descricao;
 
-    public function buscEstado(){
+    public function buscEstado()
+    {
         $UF = new estadoDAO();
         return $UF->buscEstado($this);
     }
 
-    public function newEstado(){
+    public function newEstado()
+    {
         $UF = new estadoDAO();
         return $UF->newEstado($this);
     }
@@ -227,11 +297,10 @@ class estado
 
     public function setDescricao($descricao)
     {
-        $this->descricao= $descricao;
+        $this->descricao = $descricao;
 
         return $this;
     }
-
 }
 
 
@@ -249,9 +318,8 @@ class user
     public function checkLogin()
     {
         $user = new userDAO();
-        
+
         return $user->checkLogin($this);
-        
     }
     public function getLogin()
     {
@@ -278,3 +346,38 @@ class user
         return $this;
     }
 }
+
+
+class generic
+{
+
+    public function GerarTable($dados, $Tipo)
+    {
+        $total = count($dados);
+        if ($Tipo == 1) {
+
+            for ($i = 0; $i < $total; $i++) {
+                echo "<tr>";
+                echo  "<td> <a href=''>" . $dados[$i][0] . "</a> </td>"; // empresa
+                echo  "<td> <a href=''>" . $dados[$i][1] . "</a> </td>"; // responsavel
+                echo  "<td> <a href=''>" . $dados[$i][2] . "</a> </td>";; //cnpj
+                echo  "<td> <a href=''>" . $dados[$i][3] . "</a> </td>"; //telefone
+                echo  "<td> <a href=''>" . $dados[$i][4] . "</a> </td>"; //cidade 
+                echo  "<td> <a href=''>" . $dados[$i][5] . "</a> </td>"; //estado
+                echo "</tr>";
+            }
+        } else {
+
+            for ($i = 0; $i < $total; $i++) {
+                echo "<tr>";
+                echo  "<td> <a href=''>" . $dados[$i][0] . "</a> </td>"; // empresa
+                echo  "<td> <a href=''>" . $dados[$i][2] . "</a> </td>"; // cnpj
+                echo  "<td> <a href=''>" . $dados[$i][1] . "</a> </td>";; //responsavel
+                echo  "<td> <a href='../../controller/controllerDelete.php?cnpj=".$dados[$i][2]."'>Delete</a> </td>"; //cidade 
+                echo  "<td> <a  href='modify.php?cnpj=".$dados[$i][2]."'>Alterar</a> </td>"; //estado
+                echo "</tr>";
+            }
+        }
+    }
+}
+

@@ -1,54 +1,37 @@
 <?php
 require_once '../Model/class.php';
 
+$client = new cliente($_POST['empresa'], $_POST['resp'], $_POST['cnpj'], $_POST['telefone']);
 
-$UF = new estado();
-$city = new cidade();
+if ($client->buscClient() == NULL) {
 
+    $client->newClient();
+    $UF = new estado();
+    $city = new cidade();
 
+    $UF->setDescricao($_POST['estado']);
 
-//$UF->setDescricao($_POST['estado']) ;
+    $idEstado = $UF->buscEstado();
+    if ($idEstado == NULL) { // estado não possui cadastro
 
-$UF->setDescricao("bh"); // apagar 
-    $idEstado = $UF->buscEstado(); 
-if ($idEstado== NULL) { // estado não possui cadastro
-    
-    $idEstado= $UF->newEstado(); // cria um novo 
- }
+        $idEstado = $UF->newEstado(); // cria um novo 
+    }
 
-     $city->seTIdEstado($idEstado);
-     //$city->setDescricao($_POST['cidade']);
-     $city->setDescricao("rio de janeiro"); /// apagar 
- 
-     $idcidade= $city->buscCidade(); 
-      if($idcidade == NULL){
-         $idcidade = $city-> newCidade(); 
-      }
+    $city->seTIdEstado($idEstado);
+    $city->setDescricao($_POST['city']);
 
-      $end = new endereco($_POST['numero'],$_POST['cep'],$_POST['log'],$_POST['comple'],$idcidade, $_POST['cnpj']);
-      
-      $end->newEndereco(); 
+    $idcidade = $city->buscCidade();
+    if ($idcidade == NULL) { // não possui cidade cadastrada 
+        $idcidade = $city->newCidade();
+    }
 
-// fazer cliente 
-  
-   
+    $end = new endereco($_POST['numero'], $_POST['CEP'], $_POST['log'], $_POST['comple'], $idcidade, $_POST['cnpj']);
 
-  
+    if($end->newEndereco()!=null)
+        header('location:../view/src/main.php');
+    else   
+        Echo"erro add endereco";
+} else {
 
-    
-
- 
-
-
-
-//$UF->newEstado(); 
-
-//$end = new endereco($_POST['empresa'], $_POST['resp'], $_POST['telefone'], $_POST['cnpj'], $_POST['log'], $_POST['comple'], $city->getId(),$estado->getId(), $_POST['CEP']);
-
-// add um novo endereço
-
-/*if ($end->newEndereco() != 0)
-    echo "ADD";
-else
-    echo "erro ADD";
-*/
+    echo "Cliente já possui cadasro";
+}
