@@ -86,16 +86,16 @@ class endereco
     protected $cep;
     protected $logradouro;
     protected $complemto;
-    protected $cidade;
+    protected $bairro;
 
 
-    public function __construct($numero = "", $cep = "", $logradouro = "", $complemto = "", $cidade = "", $idClinte = "")
+    public function __construct($numero = "", $cep = "", $logradouro = "", $complemto = "", $bairro = "", $idClinte = "")
     {
         $this->numero = $numero;
         $this->cep = $cep;
         $this->logradouro = $logradouro;
         $this->complemto = $complemto;
-        $this->cidade = $cidade;
+        $this->bairro = $bairro;
         $this->idClinte = $idClinte;
     }
 
@@ -175,14 +175,14 @@ class endereco
         return $this;
     }
 
-    public function getIdCidade()
+    public function getIdBairro()
     {
-        return $this->cidade;
+        return $this->bairro;
     }
 
-    public function setCidade($cidade)
+    public function setBairro($bairro)
     {
-        $this->cidade = $cidade;
+        $this->bairro = $bairro;
 
         return $this;
     }
@@ -347,6 +347,30 @@ class user
     }
 }
 
+
+class   bairro 
+{
+    protected $descricao; 
+    protected $id;
+    Protected $idCidade;  
+
+    public function __construct($id="", $descricao="",$idCidade=""){
+        $this->descricao = $descricao;
+        $this->id = $id;
+        $this->idcidade = $idCidade;
+    }
+
+        public function getIdCidade(){
+            return $this->idCidade; 
+        }
+        public function getId(){
+            return $this->id; 
+        }
+        public function getDescricao(){
+            return $this->descricao; 
+        }
+
+}
 
 class generic
 {

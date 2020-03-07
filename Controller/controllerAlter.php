@@ -2,39 +2,94 @@
 require_once "../Model/class.php";
 
 
+$acao = $_POST['acao'];
 
-$uf = new estado();
-$uf->setDescricao($_POST['estado']);
+if($acao == "AlterarCliente" ){
 
+        $CNPJAtual = $_POST["idClient"];
 
+        $client = new cliente($_POST['empresa'], $_POST['resp'], $_POST['cnpj'], $_POST['telefone']);
 
-$testEstado = $uf->buscEstado();
+        if($client->upgradeClient($CNPJAtual)!= null){
 
+            header('location:../view/src/modify.php');
 
-if ($testEstado == null) {
-    $idEstado = $uf->newEstado();
-} else {
-    $idEstado = $testEstado;
+        }else{
+
+            echo " deu merda atulizar cliente"; 
+
+        }
+
 }
-$city = new cidade($_POST['city'], $idEstado);
 
-$testCidade = $city->buscCidade();
+if($acao == "AlterarEndereco"){
+    // estado 
+    $uf = new estado();
+        $uf->setDescricao($_POST['estado']);
 
-if ($testCidade == null) {
-    $idCidade = $city->newCidade();
-} else {
-    $idCidade = $testCidade;
-}
-$client = new cliente($_POST['nome'], $_POST['resp'], $_POST['cnpj'], $_POST['telefone']);
-$end = new endereco($_POST['numero'], $_POST['CEP'], $_POST['log'], $_POST['comple'], $idCidade, $_POST['cnpj']);
 
-if ($end->upgradeEndereco($_POST['velho']) !=null) {
-    if ($client->upgradeClient($_POST['velho'] ) != null) {
 
-        header('location:../view/src/main.php');
-    }else{
-        echo "merda no cliente";
+        $testEstado = $uf->buscEstado();
+
+
+        if ($testEstado == null) {
+            $idEstado = $uf->newEstado();
+        } else {
+            $idEstado = $testEstado;
+        }
+//cidade 
+    $city = new cidade($_POST['city'], $idEstado);
+
+    $testCidade = $city->buscCidade();
+
+    if ($testCidade == null) {
+        $idCidade = $city->newCidade();
+    } else {
+        $idCidade = $testCidade;
     }
-}else {
-    echo "merda no endereco";
+
+    //bairro 
+
+    $bairro = new bairro(); 
+    $bairro->setDescricao( $_POST['bairro']);
+
+    $testbairro = $city->buscBairro();
+
+    if ($$testbairro == null) {
+        $idBairro = $city->newBairro();
+    } else {
+        $idBairro = $testbairro;
+    }
+
+    $end = new endereco($_POST['numero'], $_POST['CEP'], $_POST['log'], $_POST['comple'], $idBairro,null);
+
+    
+    if ($end->upgradeEndereco($_POST['idEnd']) !=null) {
+    
+        header('location:../view/src/modify.php');
+
+    }else {
+            echo "merda no endereco";
+    }
+
 }
+$acaoGet = $_GET['acao'];
+
+
+if($acaoGet=="deleteEnd"){
+
+    echo $_GET['acao'];
+
+}
+
+
+
+
+
+/*
+
+
+
+
+
+*/

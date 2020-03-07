@@ -199,16 +199,16 @@ class enderecoDAO
         try {
 
             $myconnection = ConnectionFactory::getConnection();
-            $sql = $myconnection->prepare("insert into grts.endereco  (numero,cep,complemento,logradouro,cnpjempresa,idcidade)  values (:numero,:cep,:complemento,:logradouro,:cnpjempresa,:idcidade)");
+            $sql = $myconnection->prepare("insert into grts.endereco  (numero,cep,complemento,logradouro,cnpjempresa,idbairro)  values (:numero,:cep,:complemento,:logradouro,:cnpjempresa,:bairro)");
 
             $sql->bindParam("numero", $numero);
             $sql->bindParam("cep", $cep);
             $sql->bindParam("complemento", $complemento);
             $sql->bindParam("logradouro", $logradouro);
             $sql->bindParam("cnpjempresa", $idCliente);
-            $sql->bindParam("idcidade", $idcidade);
+            $sql->bindParam("bairro", $bairro);
             $idCliente = $end->getIdCliente();
-            $idcidade = $end->getIdCidade();
+            $bairro = $end->getIdCidade();
             $numero = $end->getNumero();
             $cep = $end->getCEP();
             $complemento = $end->getComplemto();

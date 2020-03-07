@@ -34,9 +34,14 @@ h2{
     padding: 80px;
     font-family: 'Times New Roman', Times, serif;
     border: solid 2px black;
-    width: 60%;
+    width: 65%;
     margin-left: 20%;
     
+}
+
+.ClietDados{
+    border: solid 2px black;
+    padding: 5%;
 }
 
 .delete-div{
@@ -51,3 +56,20 @@ h2{
     font-family: 'Times New Roman', Times, serif;
     color: rgb(216, 201, 201);
 }
+
+.button2{
+    margin-top: 2%;
+}
+
+#end_id{
+    border: solid 2px black;
+    padding: 3%;
+    margin-top: 2%;
+  
+}
+
+.end_class{
+    border: solid 2px black;
+    padding: 3%;
+}
+
