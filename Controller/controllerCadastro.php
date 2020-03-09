@@ -24,8 +24,17 @@ if ($client->buscClient() == NULL) {
     if ($idcidade == NULL) { // não possui cidade cadastrada 
         $idcidade = $city->newCidade();
     }
+    $bairro = new bairro(); 
+    $bairro->setIdCidade($idcidade);
+    $bairro->setDescricao($_POST['bairro']);  
 
-    $end = new endereco($_POST['numero'], $_POST['CEP'], $_POST['log'], $_POST['comple'], $idcidade, $_POST['cnpj']);
+    $idbairro = $bairro->buscBairro();
+    if ($idbairro == NULL) { // não possui cidade cadastrada 
+        $idbairro = $bairro->newbairro();
+    }
+
+
+    $end = new endereco($_POST['numero'], $_POST['CEP'], $_POST['log'], $_POST['comple'], $idbairro, $_POST['cnpj']);
 
     if($end->newEndereco()!=null)
         header('location:../view/src/main.php');
@@ -35,3 +44,4 @@ if ($client->buscClient() == NULL) {
 
     echo "Cliente já possui cadasro";
 }
+?>

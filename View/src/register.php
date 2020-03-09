@@ -31,7 +31,7 @@
     <div>
         <div class="add-div" id="add_id" container>
             <h2>Adicionar Novo cliente</h2>
-            <form class="" action="../../Controller/controllerCadastro.php" method="POST">
+            <form name="form1" class="" action="../../Controller/controllerCadastro.php" method="POST">
 
                 <div class="form-row">
                     <div class="form-group col-md-8">
@@ -40,7 +40,8 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="cnpj">CNPJ</label>
-                        <input type="text" class="form-control" id="cnpj" name="cnpj" required>
+                        <input type="text" class="form-control" id="cnpj" name="cnpj" maxlength="18" required " 
+maxlength="18" onBlur="ValidarCNPJ(form1.cnpj);">
                     </div>
 
                 </div>
@@ -60,11 +61,11 @@
                 <div class="form-row">
                     <div class="form-group col-md-4">
                         <label for="CEP">CEP</label>
-                        <input type="text" class="form-control" id="CEP" name="CEP" onblur="pesquisacep(this.value);" size="8" required>
+                        <input type="text" class="form-control" id="CEP" name="CEP" onblur="pesquisacep(this.value);" maxlength="8" onclick="MascaraCep(CEP);" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="bairro">Bairro</label>
-                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder= "Bairro"required>
+                        <input type="text" class="form-control" id="bairro" name="bairro" placeholder= "Bairro" required>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="city">Cidade</label>

@@ -50,9 +50,10 @@ class cliente
         return $client->ClietAll();
     }
 
-    public function upgradeClient($velho){
-        $client= new clientDAO;
-       return  $client->upgradeClient($this,$velho); 
+    public function upgradeClient($old)
+    {
+        $client = new clientDAO;
+        return  $client->upgradeClient($this, $old);
     }
     public function getCNPJ()
     {
@@ -80,7 +81,7 @@ class cliente
 // fim class cliente
 
 class endereco
-{
+{   protected $id;
     protected $idClinte;
     protected $numero;
     protected $cep;
@@ -98,22 +99,38 @@ class endereco
         $this->bairro = $bairro;
         $this->idClinte = $idClinte;
     }
-
-    public function upgradeEndereco($vcnpj){
-        $end = new enderecoDAO();
-       return  $end->upgradeEndereco($this,$vcnpj); 
-    }
-
     public function newEndereco()
     {
         $end = new enderecoDAO();
 
         return  $end->newEndereco($this);
     }
-    public function SelectEndereco()
+    public function upgradeEndereco($vcnpj)
     {
         $end = new enderecoDAO();
-        return $end->SelectEndereco($this);
+        return  $end->upgradeEndereco($this, $vcnpj);
+    }
+    public function buscEndereco()
+    {
+        $end = new enderecoDAO();
+        return  $end->buscEndereco($this);
+    }
+    
+    public function ClientEndereco() {
+        $end = new enderecoDAO();
+        return  $end->ClientEndereco($this);
+    }
+    public function deleteEndereco()
+    {
+        $end = new enderecoDAO();
+
+        return  $end->deleteEndereco($this);
+    }
+    public function deleteEndereco2()
+    {
+        $end = new enderecoDAO();
+
+        return  $end->deleteEndereco2($this);
     }
     public function getIdCliente()
     {
@@ -132,7 +149,7 @@ class endereco
         return $this->numero;
     }
 
-    public function seNumero($numero)
+    public function setNumero($numero)
     {
         $this->numero = $numero;
 
@@ -144,9 +161,20 @@ class endereco
         return $this->cep;
     }
 
-    public function seCep($cep)
+    public function setCep($cep)
     {
         $this->cep = $cep;
+
+        return $this;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function setId($id)
+    {
+        $this->id = $id;
 
         return $this;
     }
@@ -156,7 +184,7 @@ class endereco
         return $this->logradouro;
     }
 
-    public function seLogradouro($logradouro)
+    public function setLogradouro($logradouro)
     {
         $this->logradouro = $logradouro;
 
@@ -348,28 +376,54 @@ class user
 }
 
 
-class   bairro 
+class   bairro
 {
-    protected $descricao; 
+    protected $descricao;
     protected $id;
-    Protected $idCidade;  
+    protected $idCidade;
 
-    public function __construct($id="", $descricao="",$idCidade=""){
+    public function __construct($id = "", $descricao = "", $idCidade = "")
+    {
         $this->descricao = $descricao;
         $this->id = $id;
         $this->idcidade = $idCidade;
     }
 
-        public function getIdCidade(){
-            return $this->idCidade; 
-        }
-        public function getId(){
-            return $this->id; 
-        }
-        public function getDescricao(){
-            return $this->descricao; 
-        }
+    public function getIdCidade()
+    {
+        return $this->idCidade;
+    }
+    public function setIdCIdade($bairro)
+    {
+        $this->idCidade = $bairro;
+        return $this;
+    }
+    public function getId()
+    {
+        return $this->id;
+    }
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+    public function setDescricao($bairro)
+    {
+        $this->descricao = $bairro;
+        return $this;
+    }
 
+
+    public function buscBairro()
+    {
+        $bairro = new bairroDAO();
+        return $bairro->buscBairro($this);
+    }
+
+    public function newBairro()
+    {
+        $bairro = new bairroDAO();
+        return $bairro->newBairro($this);
+    }
 }
 
 class generic
@@ -378,30 +432,31 @@ class generic
     public function GerarTable($dados, $Tipo)
     {
         $total = count($dados);
-        if ($Tipo == 1) {
+        
+       if ($Tipo == 1) {
 
             for ($i = 0; $i < $total; $i++) {
                 echo "<tr>";
-                echo  "<td> <a href=''>" . $dados[$i][0] . "</a> </td>"; // empresa
-                echo  "<td> <a href=''>" . $dados[$i][1] . "</a> </td>"; // responsavel
-                echo  "<td> <a href=''>" . $dados[$i][2] . "</a> </td>";; //cnpj
-                echo  "<td> <a href=''>" . $dados[$i][3] . "</a> </td>"; //telefone
-                echo  "<td> <a href=''>" . $dados[$i][4] . "</a> </td>"; //cidade 
-                echo  "<td> <a href=''>" . $dados[$i][5] . "</a> </td>"; //estado
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][0] . "</a> </td>"; // empresa
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][1] . "</a> </td>"; // responsavel
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][2] . "</a> </td>";; //cnpj
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][3] . "</a> </td>"; //telefone
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][4] . "</a> </td>"; //cidade 
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][5] . "</a> </td>"; //estado
                 echo "</tr>";
             }
         } else {
 
             for ($i = 0; $i < $total; $i++) {
                 echo "<tr>";
-                echo  "<td> <a href=''>" . $dados[$i][0] . "</a> </td>"; // empresa
-                echo  "<td> <a href=''>" . $dados[$i][2] . "</a> </td>"; // cnpj
-                echo  "<td> <a href=''>" . $dados[$i][1] . "</a> </td>";; //responsavel
-                echo  "<td> <a href='../../controller/controllerDelete.php?cnpj=".$dados[$i][2]."'>Delete</a> </td>"; //cidade 
-                echo  "<td> <a  href='modify.php?cnpj=".$dados[$i][2]."'>Alterar</a> </td>"; //estado
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][0] . "</a> </td>"; // empresa
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][2] . "</a> </td>"; // cnpj
+                echo  "<td> <a href='modify.php?cnpj=" . $dados[$i][2] . "'>" . $dados[$i][1] . "</a> </td>";; //responsavel
+                echo  "<td> <a href='../../controller/controllerDelete.php?cnpj=" . $dados[$i][2] . "'>Delete</a> </td>"; //cidade 
+                echo  "<td> <a  href='modify.php?cnpj=" . $dados[$i][2] . "'>Alterar</a> </td>"; //estado
                 echo "</tr>";
             }
         }
     }
 }
-
+?>

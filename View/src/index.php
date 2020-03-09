@@ -20,9 +20,12 @@
 <body>
     <div>
         <header >
-            <div class="index-header"">
-                <h1 >GRTS</h1>
+            <div class="index-header">
+                
+                <h1  >GRTS</h1>
                 <h3>Distribuição de Alimentos</h3>
+       
+                
             </div>
         </header>
         <div class="login-div">
